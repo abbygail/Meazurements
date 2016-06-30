@@ -1,4 +1,4 @@
-var homePage = angular.module("homePage", ['ionic','ui.router']);
+var homePage = angular.module("homePage", ['ionic', 'ui.router']);
 
 
 homePage.run(function($ionicPlatform){
@@ -14,45 +14,45 @@ homePage.run(function($ionicPlatform){
 
 homePage.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
 
-	$stateProvider
-		/*.state('main', {
-            url:"/",
-           // abstract: true,          
-           //template: '<br><br><br><div class="loginButton"><button ng-click="logIn()">Log In </button><div><br><br><button ng-click="signUp()">Sign Up</button-->',
-			controller: 'homeController'           
-        })
-		.state('main.login',{
-		url: 'login',
-			views:{ 'pageContent' : {
-			templateURL: 'LoginPagePartial.html',
-			//template: '<br><h1>Welcome</h1>',
-			controller: 'homeController'
-			}
-			}
-		})*/
+	$stateProvider		
 		.state('home', {
-			url: '/',
-			templateURL: 'homePartial.html',
-			controller: 'homeController'
-		})
+			url: "/home",
+			templateUrl: "LoginPagePartial.html",			
+			controller: "homeController"
+		})		
+		.state('signUp', {
+			url: "/signUp",
+			templateUrl: "signUp.html",		
+			controller: "homeController"
+		})	
 		.state('login', {
-			url: '/login',
-			templateURL: 'LoginPagePartial.html',
-			controller: 'homeController'
+			url: "/login",
+			templateUrl: "LoginPagePartial.html",
+			controller: "homeController"
+		})	
+		.state('forgot', {
+			url: "/forgotPassword",
+			templateUrl: "forgot.html",
+			controller: "homeController"
 		})		
 		;
 
-	$urlRouterProvider.otherwise('/');
-}]);
+	$urlRouterProvider.otherwise("/home");
+}])
+
 
 homePage.controller('homeController', ['$scope', '$location', '$http', '$state', '$stateParams', function($scope, $http, $location, $state, $stateParams){
 	
-	$scope.logIn=function(){			
-		$state.go('login');
-		//window.location.href='templates/LoginPage.html';
+	$scope.logIn=function(){					
+		$state.go('login');			
 	}
-
 	$scope.signUp=function(){
-		window.location.href='templates/SignUp.html';
+		$state.go('signUp');		
 	}
-}]);
+	$scope.forgot=function(){					
+		$state.go('forgot');	
+	}
+	$scope.goToAccount=function(){
+		window.location.href='templates/userAccountHome.html';
+	}
+}])
