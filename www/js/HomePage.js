@@ -17,19 +17,14 @@ homePage.config(['$stateProvider', '$urlRouterProvider', function($stateProvider
 	$stateProvider		
 		.state('home', {
 			url: "/home",
-			templateUrl: "LoginPagePartial.html",			
+			templateUrl: "LoginPage.html",			
 			controller: "homeController"
 		})		
 		.state('signUp', {
 			url: "/signUp",
 			templateUrl: "signUp.html",		
 			controller: "homeController"
-		})	
-		.state('login', {
-			url: "/login",
-			templateUrl: "LoginPagePartial.html",
-			controller: "homeController"
-		})	
+		})				
 		.state('forgot', {
 			url: "/forgotPassword",
 			templateUrl: "forgot.html",
@@ -44,7 +39,7 @@ homePage.config(['$stateProvider', '$urlRouterProvider', function($stateProvider
 homePage.controller('homeController', ['$scope', '$location', '$http', '$state', '$stateParams', function($scope, $http, $location, $state, $stateParams){
 	
 	$scope.logIn=function(){					
-		$state.go('login');			
+		$state.go('home');			
 	}
 	$scope.signUp=function(){
 		$state.go('signUp');		
